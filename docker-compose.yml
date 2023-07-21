@@ -1,0 +1,23 @@
+version: '3.8' 
+
+services:
+  curl:
+    build: .
+    image: programyun1/curlconverter:latest
+    container_name: curlconverter
+    ports:
+      - "59992:80"
+    environment:
+      - TZ=Asia/Taipei
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+
+
+  curl-api:
+    build: .
+    image: heawercher/curlconverter
+    container_name: curlconverter-api
+    ports:
+      - "59991:8000"
+    environment:
+      - TZ=Asia/Taipei
